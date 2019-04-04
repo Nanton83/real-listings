@@ -5,4 +5,9 @@ class AgentController < ApplicationController
         erb :'/agent/create_agent'  
     end
 
+    post '/signup' do
+        @signup_info = params
+        erb :'/agent/agent_home'
+    end
+
 end
