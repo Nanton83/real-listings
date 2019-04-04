@@ -1,7 +1,8 @@
 class AgentController < ApplicationController
 
     get '/signup' do
-        erb :'/agent/create_agent'
+        # if !logged_in?
+        erb :'/agent/create_agent'  
     end
 
 end
