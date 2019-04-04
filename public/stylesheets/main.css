@@ -9,6 +9,7 @@
   html, body {
     height: 100%;
     max-width: 600px;
+    margin: 0 auto;
   }
 
   /* --- Welcome Page Styles --- */
@@ -28,6 +29,7 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+   
   }
 
   h1 {
@@ -92,6 +94,7 @@
     -webkit-box-shadow: none;
     box-shadow: none;
     width: auto;
+    
   }
 
   .content, .sidebar {
@@ -119,7 +122,7 @@
 }
 
 .container {
-  margin: 0 auto;
+  
   text-align: center;
 }
 
