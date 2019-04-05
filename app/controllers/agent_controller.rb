@@ -6,8 +6,18 @@ class AgentController < ApplicationController
     end
 
     post '/signup' do
+        if params[:email] == ""
+            redirect to '/signup'
+            elsif
+            params[:user_name] == ""
+            redirect to '/signup'
+            elsif
+            params[:password] == ""
+            redirect to '/signup'
+        else
         @signup_info = params
         erb :'/agent/agent_home'
+        end
     end
 
 end
