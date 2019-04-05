@@ -1,4 +1,4 @@
-class AgentController < ApplicationController
+class AgentsController < ApplicationController
 
     get '/signup' do
         # if !logged_in?
@@ -9,14 +9,16 @@ class AgentController < ApplicationController
         if params[:email] == ""
             redirect to '/signup'
             elsif
-            params[:user_name] == ""
+            params[:user_name] == ""  #Making sure all the fields are filled out for signup
             redirect to '/signup'
             elsif
             params[:password] == ""
             redirect to '/signup'
         else
-        @signup_info = params
-        erb :'/agent/agent_home'
+            @agent = Agent.create(email: params[:email], user_name: params[:user_name], password: params[:password])
+            @agent.save
+            session[:user_id] = @agent.id
+            erb :'agent/show'
         end
     end
 
