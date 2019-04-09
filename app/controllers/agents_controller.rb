@@ -18,7 +18,7 @@ class AgentsController < ApplicationController
             @agent = Agent.create(email: params[:email], user_name: params[:user_name], password: params[:password])
             @agent.save
             session[:id] = @agent.id
-            erb :'agent/show'
+            redirect to 'agent/show'
         end
     end
 
@@ -28,14 +28,12 @@ class AgentsController < ApplicationController
     end 
 
     post '/login' do
-        @agent = Agent.find_by(:user_name => params[:username])
-        binding.pry
-        if @agent && @agent.authenticate(params[:password])
-
+        @agent = Agent.find_by(user_name: params["user_name"])
+        if @agent && @agent.authenticate(params[:password])  #confirms that user exists and password entered is correct
             session[:id] = @agent.id
             redirect to '/agent/show'
         else
-            redirect to '/signup'
+            redirect to '/login'
         end
     end
 
@@ -44,5 +42,9 @@ class AgentsController < ApplicationController
         session.destroy
         redirect to '/login'
     end
+
+    get '/agent/show' do
+        erb :'/agent/show'
+    end 
 
 end
