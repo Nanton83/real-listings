@@ -1,11 +1,18 @@
-<div class="sidebar">
-<h1>All Listings</h1>
+<div class="container">
+    <h1>All Listings</h1>
 
-<% @listings.each do |listing| %>
-<%= listing.id %>:
-<%= listing.address %> <br>
-<% end %> <br>
-<a href="/create_listing">Create New Listing</a>
-<a href="/agent/show">Home Page</a>
-<a href="/logout">Logout</a>
+    <div class="sidebar">
+
+        <% @listings.each do |listing| %>
+        <%= listing.id %>:
+        <%= listing.address %> <br><br>
+        <% end %>
+
+            <ul>
+                <li><a href="/create_listing">Create New Listing</a></li><br>
+                <li><a href="/agent/show">Home Page</a></li><br>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+    
+    </div>
 </div>

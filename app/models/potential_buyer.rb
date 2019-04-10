@@ -1,3 +1,4 @@
 class PotentialBuyer < ActiveRecord::Base
-    belongs_to :listing
+    has_many :agent_listings
+    has_many :listings, through: :agent_listings
 end 

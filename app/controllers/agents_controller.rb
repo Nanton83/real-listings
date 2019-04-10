@@ -45,6 +45,7 @@ class AgentsController < ApplicationController
 
     get '/agent/show' do
         @agents = Agent.all
+        @listings = Listing.all
         erb :'/agent/show'
     end 
 

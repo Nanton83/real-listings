@@ -1,4 +1,5 @@
 class Listing < ActiveRecord::Base
-    belongs_to :agent
-    has_many :potential_buyers
+    has_many :agent_listings
+    has_one :agents, through: :agent_listings
+    has_many :potential_buyers, through: :agent_listings
 end 
