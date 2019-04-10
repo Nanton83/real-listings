@@ -13,4 +13,15 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  helpers do
+    def logged_in?
+      !!current_agent
+    end
+
+    def current_agent
+      @current_agent ||= Agent.find_by(session[:id]) if session[:id]
+    end
+
+  end
+
 end

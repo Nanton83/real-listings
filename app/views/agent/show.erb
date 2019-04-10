@@ -1,8 +1,20 @@
 <h1>This is an agents home page</h1>
 
 <div class="sidebar">
-    <ul>
-      <li>Listings</li>
-      <li>Potential Buyers</li>
-    </ul>
-  </div>
+  <ul>
+  <% @agents.each do |agent| %>
+<%= agent.id %>:
+<%= agent.user_name %> <br>
+<% end %> <br>
+  
+    <li>Potential Buyers</li>
+  </ul>
+</div>
+
+<div class="sidebar">
+  <ul>
+    <li><a href="/create_listing">Create New Listing</a></li>
+    <li><a href="/listings">See All Listings</a></li>
+    <a href="/logout">Logout</a>
+  </ul>
+</div>

@@ -44,7 +44,14 @@ class AgentsController < ApplicationController
     end
 
     get '/agent/show' do
+        @agents = Agent.all
         erb :'/agent/show'
     end 
+
+    # get '/agent/:slug' do
+    #     @agent = Agent.find_by_slug(params[:slug])
+    #     @listings = @agent.listings
+    #     erb :'/agent/show'
+    #   end
 
 end
