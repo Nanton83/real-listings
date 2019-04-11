@@ -39,15 +39,21 @@ class AgentsController < ApplicationController
 
     get '/logout' do
         #if logged_in?
-        session.destroy
+        session.clear
         redirect to '/login'
     end
 
     get '/agent/show' do
         @agents = Agent.all
+        @current_agent = Agent.find_by(session[:id])
         @listings = Listing.all
         erb :'/agent/show'
-    end 
+    end
+    
+    # get '/agent/:id' do
+    #     @agent = Agent.find_by(session[:id])
+    #     erb :'/agent/show'
+    # end
 
     # get '/agent/:slug' do
     #     @agent = Agent.find_by_slug(params[:slug])

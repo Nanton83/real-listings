@@ -1,23 +1,17 @@
 <div class="container">
 
-  <h1>This is an agents home page</h1><br>
+  <h1>Welcome, <%= @current_agent.user_name %>! </h1><br>
+  <h2>Here are your listings with potential buyers.</h2>
 
-  <div class="sidebar">
-  
-    <ul>
-    <% @agents.each do |agent| %>
-    <%= agent.id %>:
-    <%= agent.user_name %> <br>
-    <% end %> <br>
+  <div>
 
     <% @listings.each do |listing| %>
     <%= listing.id %>:
-    <%= listing.address %> <br>
+    <%= listing.address %>
+    <%= listing.square_feet%> Square Feet<br>
+    
     <% end %> <br>
-  
-    <li>Potential Buyers</li>
-    </ul>
-
+    
   </div><br>
 
   <ul>
