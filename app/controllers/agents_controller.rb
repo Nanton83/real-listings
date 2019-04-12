@@ -17,7 +17,7 @@ class AgentsController < ApplicationController
         else
             @agent = Agent.create(email: params[:email], user_name: params[:user_name], password: params[:password])
             @agent.save
-            session[:id] = @agent.id
+            session[:user_id] = @agent.id
             redirect to 'agent/show'
         end
     end
