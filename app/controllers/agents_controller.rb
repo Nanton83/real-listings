@@ -1,5 +1,5 @@
 class AgentsController < ApplicationController
-
+    
     get '/signup' do
         # if !logged_in?
         erb :'/agent/create_agent'  
@@ -23,31 +23,37 @@ class AgentsController < ApplicationController
     end
 
     get '/login' do
-        #if !logged_in?
+        if !logged_in?
         erb :'/agent/login'
+        else
+        redirect to '/agent/show'
+        end
     end 
 
     post '/login' do
         @agent = Agent.find_by(user_name: params["user_name"])
         if @agent && @agent.authenticate(params[:password])  #confirms that user exists and password entered is correct
-            session[:id] = @agent.id
-            redirect to '/agent/show'
+            session[:user_id] = @agent.id
+            redirect '/agent/show'
         else
             redirect to '/login'
         end
     end
 
-    get '/logout' do
-        #if logged_in?
-        session.clear
-        redirect to '/login'
-    end
-
     get '/agent/show' do
         @agents = Agent.all
-        @current_agent = Agent.find_by(session[:id])
+        @current_agent = Agent.find(session[:user_id])
         @listings = Listing.all
         erb :'/agent/show'
+    end
+
+    get '/logout' do
+        if logged_in?
+        session.clear
+        redirect to '/login'
+        else
+            redirect to '/'
+        end
     end
     
     # get '/agent/:id' do
