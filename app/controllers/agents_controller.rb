@@ -44,16 +44,14 @@ class AgentsController < ApplicationController
     end
 
     get '/agent/show' do
-        @agents = Agent.all
-        @current_agent = Agent.find(session[:user_id])
-        @listings = Listing.all
-        erb :'/agent/show'
+        @agent = current_agent
+        redirect to "/agents/#{@agent.id}"
     end
 
     get '/logout' do
         if logged_in?
         session.clear
-        redirect to '/login'
+        redirect to '/'
         else
             redirect to '/'
         end

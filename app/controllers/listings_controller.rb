@@ -10,8 +10,22 @@ class ListingsController < ApplicationController
     end
 
     post '/create_listing' do
-        @current_agent = Agent.find(session[:user_id])
-        @listing = Listing.create(address: params[:address], bedrooms: params[:bedrooms], bathrooms: params[:bathrooms], square_feet: params[:square_feet], price: params[:price])
-        redirect to '/agent/show'
+    
+        @listing = current_agent.listings.create(address: params[:address], bedrooms: params[:bedrooms], bathrooms: params[:bathrooms], square_feet: params[:square_feet], price: params[:price])
+        if @listing.save
+        redirect to "/agents/#{@listing.agent_id}"
+        else
+        redirect to '/create_listing'
+        end
     end
+
+    get '/agents/:id' do
+        if logged_in?
+          @listings = current_agent.listings
+          erb :'agent/show'
+        else
+          redirect to '/login'
+        end
+      end
+
 end

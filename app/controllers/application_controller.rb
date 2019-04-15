@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_agent
-      @current_agent ||= Agent.find_by(session[:user_id]) if session[:user_id]
+      @current_agent ||= Agent.find_by(:id => session[:user_id])
     end
 
   end
