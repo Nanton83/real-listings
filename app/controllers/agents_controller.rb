@@ -1,8 +1,11 @@
 class AgentsController < ApplicationController
     
     get '/signup' do
-        # if !logged_in?
-        erb :'/agent/create_agent'  
+        if !logged_in?
+        erb :'/agent/create_agent'
+        else
+            redirect '/agent/show'
+        end  
     end
 
     post '/signup' do

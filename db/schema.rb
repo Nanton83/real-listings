@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(version: 20190410162928) do
   end
 
   create_table "listings", force: :cascade do |t|
-    t.string "address"
-    t.string "bedrooms"
-    t.string "bathrooms"
-    t.string "square_feet"
-    t.string "price"
+    t.integer "agent_id"
+    t.string  "address"
+    t.string  "bedrooms"
+    t.string  "bathrooms"
+    t.string  "square_feet"
+    t.string  "price"
   end
 
   create_table "potentialbuyers", force: :cascade do |t|
