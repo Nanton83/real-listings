@@ -2,6 +2,8 @@ class ListingsController < ApplicationController
 
     get '/listings' do
         @listings = Listing.all
+        @agents = Agent.all
+        binding.pry
         erb :'/listings/listings'
     end
 

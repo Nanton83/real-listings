@@ -6,9 +6,11 @@
   <div>
 
     <% @listings.each do |listing| %>
-    <%= listing.id %>:
-    <%= listing.address %>
-    <%= listing.square_feet%> Square Feet<br>
+    <%= listing.address %>,
+    <%= listing.bedrooms %> Bedrooms,
+    <%= listing.bathrooms %> Bathrooms,
+    <%= listing.square_feet %> Square Feet,
+    $<%= listing.price %><br>
     
     <% end %> <br>
     

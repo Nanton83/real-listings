@@ -1,12 +1,16 @@
 <div class="container">
-    <h1>All Listings</h1>
+    <h1>All Listings</h1><br>
 
-    <div class="sidebar">
+    <div>
 
         <% @listings.each do |listing| %>
-        <%= listing.id %>:
-        <%= listing.address %> <br><br>
+        <%= listing.address %>,
+        <%= listing.bedrooms %> Bedrooms,
+        <%= listing.bathrooms %> Bathrooms,
+        <%= listing.square_feet %> Square Feet,
+        $<%= listing.price %><br>
         <% end %>
+
 
             <ul>
                 <li><a href="/create_listing">Create New Listing</a></li><br>
