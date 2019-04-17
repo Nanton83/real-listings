@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
     get '/listings' do
         @listings = Listing.all
         @agents = Agent.all
-        binding.pry
+        
         erb :'/listings/listings'
     end
 
@@ -12,7 +12,6 @@ class ListingsController < ApplicationController
     end
 
     post '/create_listing' do
-    
         @listing = current_agent.listings.create(address: params[:address], bedrooms: params[:bedrooms], bathrooms: params[:bathrooms], square_feet: params[:square_feet], price: params[:price])
         if @listing.save
         redirect to "/agents/#{@listing.agent_id}"
