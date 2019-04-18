@@ -4,13 +4,18 @@
     <div>
 
         <% @listings.each do |listing| %>
-        
-        <%= listing.address %>,
-        <%= listing.bedrooms %> Bedrooms,
-        <%= listing.bathrooms %> Bathrooms,
-        <%= listing.square_feet %> Square Feet,
-        $<%= listing.price %>,
-        <%= listing.agent.user_name %>
+        <%= listing.address %>
+        <br>
+        <%= listing.bedrooms %> Bedrooms
+        <br>
+        <%= listing.bathrooms %> Bathrooms
+        <br>
+        <%= listing.square_feet %> Square Feet
+        <br>
+        $<%= listing.price %>
+        <br>
+        Listings Agent: <%= listing.agent.user_name %>
+        <br><br>
         <% end %>
 
 

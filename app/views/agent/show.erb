@@ -1,18 +1,22 @@
 <div class="container">
 
   <h1>Welcome, <%= @current_agent.user_name %></h1><br>
-  <h2>Here are your listings with potential buyers.</h2>
+  <h2>Here are your listings</h2>
 
   <div>
 
     <% @listings.each do |listing| %>
-    <%= listing.address %>,
-    <%= listing.bedrooms %> Bedrooms,
-    <%= listing.bathrooms %> Bathrooms,
-    <%= listing.square_feet %> Square Feet,
-    $<%= listing.price %><br>
-    
-    <% end %> <br>
+        <%= listing.address %>
+        <br>
+        <%= listing.bedrooms %> Bedrooms
+        <br>
+        <%= listing.bathrooms %> Bathrooms
+        <br>
+        <%= listing.square_feet %> Square Feet
+        <br>
+        $<%= listing.price %>
+        <br><br>
+        <% end %>
     
   </div><br>
 
