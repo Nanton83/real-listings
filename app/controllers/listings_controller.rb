@@ -27,6 +27,17 @@ class ListingsController < ApplicationController
         else
           redirect to '/login'
         end
+    end
+
+    get '/listings/:id/edit' do
+      if logged_in?
+        @listing = Listing.find_by(id: params[:id])
+        binding.pry
+        erb :'/listing/edit_listing'
+      else
+        redirect to "/login"
       end
+    end
+
 
 end

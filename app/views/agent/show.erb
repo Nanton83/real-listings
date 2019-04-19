@@ -6,6 +6,7 @@
   <div>
 
     <% @listings.each do |listing| %>
+   
         <%= listing.address %>
         <br>
         <%= listing.bedrooms %> Bedrooms
@@ -15,7 +16,10 @@
         <%= listing.square_feet %> Square Feet
         <br>
         $<%= listing.price %>
-        <br><br>
+        <br>
+        <br>
+        <hr>
+        <br>
         <% end %>
     
   </div><br>
