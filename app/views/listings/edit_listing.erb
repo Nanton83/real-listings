@@ -1,6 +1,29 @@
-<h1>Edit Listing</h1>
-<form action="/listings/<%=@listing.id%>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
+<div class="container">
 
+  <h1>Edit Listing</h1>
+  <br>
 
-  </form>
+  <div>
+    <form action="/listings/<%=@listing.id%>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+
+    <label>Edit Address</label>
+    <input type="text" name="address" value="<%= @listing.address %>">
+    <input type="submit" name="Edit Address" value="submit"><br><br>
+
+    <label>Edit Bedrooms</label>
+    <input type="text" name="address" value="<%= @listing.bedrooms %>">
+    <input type="submit" name="Edit Bedrooms" value="submit"><br><br>
+
+    <label>Edit Bathrooms</label>
+    <input type="text" name="Bathrooms" value="<%= @listing.bathrooms %>">
+    <input type="submit" name="Edit Bathrooms" value="submit"><br><br>
+
+    <label>Edit Square Feet</label>
+    <input type="text" name="square_feet" value="<%= @listing.square_feet %>">
+    <input type="submit" name="Edit Square Feet" value="submit">
+
+    </form>
+  </div>
+
+</div>
