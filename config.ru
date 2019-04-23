@@ -7,3 +7,4 @@ end
 run ApplicationController
 use AgentsController
 use ListingsController
+use SessionsController

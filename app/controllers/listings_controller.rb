@@ -20,15 +20,6 @@ class ListingsController < ApplicationController
         end
     end
 
-    get '/agents/:id' do
-        if logged_in?
-          @listings = current_agent.listings
-          erb :'agent/show'
-        else
-          redirect to '/login'
-        end
-    end
-
     get '/agents/:id/edit' do
       if logged_in?
         @listing = Listing.find_by(id: params[:id])
