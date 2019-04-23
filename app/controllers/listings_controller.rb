@@ -29,7 +29,7 @@ class ListingsController < ApplicationController
         end
     end
 
-    get '/listings/:id/edit' do
+    get '/agents/:id/edit' do
       if logged_in?
         @listing = Listing.find_by(id: params[:id])
         erb :'/listings/edit_listing'
@@ -37,6 +37,22 @@ class ListingsController < ApplicationController
         redirect to "/login"
       end
     end
+
+    patch '/agents/:id' do
+      
+      if logged_in?
+        @listing = Listing.find_by(id: params[:id])
+        binding.pry
+        if params[:address] && params[:bedrooms] && params[:bathrooms] && params[:square_feet] && params[:price]
+        @listing.update(address: params[:address], bedrooms: params[:bedrooms], bathrooms: params[:bathrooms], square_feet: params[:square_feet], price: params[:price])
+        redirect to "/agents/#{@listing.agent_id}"
+      else
+        redirect to '/agents/show'
+      end
+    else
+      redirect to "/login"
+    end
+  end
 
 
 end
