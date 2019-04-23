@@ -29,6 +29,14 @@ class ListingsController < ApplicationController
       end
     end
 
+    get '/listings/:id' do
+      @listing = Listing.find_by(id: params[:id])
+    end
+    
+    post '/listings/:id' do
+      
+    end
+
     patch '/listings/:id' do
       
       if logged_in?
