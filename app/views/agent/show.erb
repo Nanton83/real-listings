@@ -1,6 +1,10 @@
 <div class="container">
 
-  <h1>Welcome, <%= @current_agent.user_name %></h1><br>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+
+  <h1>Welcome, <%= current_agent.user_name %></h1><br>
   <h2>Here are your listings</h2>
 
   <div>
@@ -18,6 +22,7 @@
         $<%= listing.price %>
         <br>
         <a href="/listings/<%= listing.id %>/edit">Edit Listing</a>
+        
         <br>
         <br>
         <hr>

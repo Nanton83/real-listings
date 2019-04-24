@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
         if !logged_in?
         erb :'/agent/create_agent'
         else
-            redirect '/agent/show'
+            redirect to '/logout'
         end  
     end
 
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
             @agent = Agent.create(email: params[:email], user_name: params[:user_name], password: params[:password])
             @agent.save
             session[:user_id] = @agent.id
-            redirect to 'agent/show'
+            redirect to "/agents/#{current_agent.id}"
         end
     end
 
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
         if !logged_in?
         erb :'/agent/login'
         else
-        redirect to '/agent/show'
+            redirect to "/agents/#{current_agent.id}"
         end
     end 
 
@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
         @agent = Agent.find_by(user_name: params["user_name"])
         if @agent && @agent.authenticate(params[:password])  #confirms that user exists and password entered is correct
             session[:user_id] = @agent.id
-            redirect '/agent/show'
+            redirect to "/agents/#{current_agent.id}"
         else
             redirect to '/login'
         end
