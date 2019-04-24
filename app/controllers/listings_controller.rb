@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
 
     get '/listings/:id' do
       @listing = Listing.find_by(id: params[:id])
+
     end
 
     get '/listings/:id/edit' do
@@ -41,7 +42,7 @@ class ListingsController < ApplicationController
         @listing.update(address: params[:address], bedrooms: params[:bedrooms], bathrooms: params[:bathrooms], square_feet: params[:square_feet], price: params[:price])
         redirect to "/agents/#{@listing.agent_id}"
       else
-        redirect to '/agents/show'
+        redirect to "/agents/#{current_agent.id}"
       end
     else
       redirect to "/login"
