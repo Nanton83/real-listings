@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+    
     get '/signup' do
         if !logged_in?
         erb :'/agent/create_agent'
@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
     end
 
     post '/signup' do
-        if params[:email] == ""
+        if  params[:email] == "" 
+            flash[:message] = "Please Complete Form"
             redirect to '/signup'
-            elsif
-            params[:user_name] == ""  #Making sure all the fields are filled out for signup
+            elsif params[:user_name] == ""  #Making sure all the fields are filled out for signup
+            flash[:message] = "Please Complete Form"
             redirect to '/signup'
-            elsif
-            params[:password] == ""
+            elsif params[:password] == ""
+            flash[:message] = "Please Complete Form"
             redirect to '/signup'
         else
             @agent = Agent.create(email: params[:email], user_name: params[:user_name], password: params[:password])

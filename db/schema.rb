@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20190410162928) do
   create_table "listings", force: :cascade do |t|
     t.integer "agent_id"
     t.string  "address"
-    t.string  "bedrooms"
-    t.string  "bathrooms"
-    t.string  "square_feet"
+    t.integer "bedrooms"
+    t.integer "bathrooms"
+    t.integer "square_feet"
     t.string  "price"
   end
 

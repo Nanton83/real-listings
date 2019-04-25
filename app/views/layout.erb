@@ -16,6 +16,13 @@
   <body>
     <div class="wrapper">
 
+    <div class="container">
+    <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+    <% end %>
+    </div>
+
+
 
 
         <%= yield %>

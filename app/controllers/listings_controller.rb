@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  
 
     get '/listings' do
         @listings = Listing.all
@@ -14,7 +15,7 @@ class ListingsController < ApplicationController
     post '/listings' do
         @listing = current_agent.listings.create(address: params[:address], bedrooms: params[:bedrooms], bathrooms: params[:bathrooms], square_feet: params[:square_feet], price: params[:price])
         if @listing.save
-        flash[:message] = "Succesfsfully Created Listing"
+        flash[:message] = "Successfully Created Listing"
         redirect to "/agents/#{@listing.agent_id}"
         else
         redirect to '/listings/new'
