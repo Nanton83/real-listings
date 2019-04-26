@@ -20,9 +20,14 @@ class SessionsController < ApplicationController
             redirect to '/signup'
         else
             @agent = Agent.create(email: params[:email], user_name: params[:user_name], password: params[:password])
-            @agent.save
+        
+            if @agent.save
             session[:user_id] = @agent.id
-            redirect to "/agents/#{current_agent.id}"
+            redirect to "/agents/#{current_agent.id}"      
+            else
+                flash[:message] = "Username Already Exists!"
+                redirect to '/signup'
+            end
         end
     end
 

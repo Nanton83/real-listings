@@ -28,9 +28,9 @@
     <label>Edit Price</label>
     <input type="text" name="price" value="<%= @listing.price %>">
     <br><br>
-    <input type="submit" value="submit">
+    <input type="submit" value="Submit">
 
-    </form>
+    </form><br>
 
     <form action="/listings/<%=@listing.id%>" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">

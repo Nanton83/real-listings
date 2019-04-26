@@ -23,6 +23,7 @@ class ApplicationController < Sinatra::Base
       @current_agent ||= Agent.find_by(:id => session[:user_id])
     end
 
+
   end
 
 end
