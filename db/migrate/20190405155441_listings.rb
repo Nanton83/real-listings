@@ -6,7 +6,7 @@ class Listings < ActiveRecord::Migration
       t.integer :bedrooms
       t.integer :bathrooms
       t.integer :square_feet
-      t.string :price
+      t.integer :price
     end
   end
 end

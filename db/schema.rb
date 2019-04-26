@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20190410162928) do
     t.integer "bedrooms"
     t.integer "bathrooms"
     t.integer "square_feet"
-    t.string  "price"
+    t.integer "price"
   end
 
   create_table "potentialbuyers", force: :cascade do |t|
