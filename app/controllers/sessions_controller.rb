@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     
     get '/signup' do
         if !logged_in?
-        erb :'/agent/create_agent'
+            erb :'/agent/create_agent'
         else
             redirect to '/logout'
         end  
@@ -13,18 +13,11 @@ class SessionsController < ApplicationController
         if  params[:email] == "" || params[:user_name] == "" || params[:password] == ""
             flash[:message] = "Please Complete Form"
             redirect to '/signup'
-        # elsif params[:user_name] == ""  #Making sure all the fields are filled out for signup
-        #     flash[:message] = "Please Complete Form"
-        #     redirect to '/signup'
-        # elsif params[:password] == ""
-        #     flash[:message] = "Please Complete Form"
-        #     redirect to '/signup'
         else
             @agent = Agent.create(email: params[:email], user_name: params[:user_name], password: params[:password])
-        
             if @agent.save                  #if the agent can successfully be created the session is set and redirected to show page
-            session[:user_id] = @agent.id
-            redirect to "/agents/#{current_agent.id}"      
+                session[:user_id] = @agent.id
+                redirect to "/agents/#{current_agent.id}"      
             else
                 flash[:message] = "Username Already Exists!"        #agent.create activates the validation set in the agent model
                 redirect to '/signup'
@@ -34,7 +27,7 @@ class SessionsController < ApplicationController
 
     get '/login' do
         if !logged_in?
-        erb :'/agent/login'
+            erb :'/agent/login'
         else
             redirect to "/agents/#{current_agent.id}"
         end
@@ -52,8 +45,8 @@ class SessionsController < ApplicationController
     
     get '/logout' do
         if logged_in?
-        session.clear               #clears session and redirects to welcome page
-        redirect to '/'
+            session.clear               #clears session and redirects to welcome page
+            redirect to '/'
         else
             redirect to '/'
         end

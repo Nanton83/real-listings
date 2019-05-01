@@ -15,6 +15,7 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+
     def logged_in?
       !!current_agent   #returns a boolean 
     end
@@ -27,6 +28,7 @@ class ApplicationController < Sinatra::Base
       if !logged_in?
         redirect to '/login'
       end
+    end
 
     def redirect_if_not_listing_agent(listing)
       if listing.agent_id != current_agent.id
@@ -34,10 +36,6 @@ class ApplicationController < Sinatra::Base
         redirect to "/agents/#{@listing.agent_id}"
       end
     end
-
-    end
-
-
+    
   end
-
 end
