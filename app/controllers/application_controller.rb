@@ -11,16 +11,16 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :welcome      #renders the welcome page
   end
 
   helpers do
     def logged_in?
-      !!current_agent
+      !!current_agent   #returns a boolean 
     end
 
     def current_agent
-      @current_agent ||= Agent.find_by(:id => session[:user_id])
+      @current_agent ||= Agent.find_by(:id => session[:user_id])    #Sets @current_agent to the active session
     end
 
 

@@ -2,30 +2,25 @@ class ListingsController < ApplicationController
   
 
     get '/listings' do
-        @listings = Listing.all
-        @agents = Agent.all
+        @listings = Listing.all    #Provides all listing information to be rendered in /listings/listings
+        @agents = Agent.all       #Provides all agent information to be rendered in /listings/listings
         
         erb :'/listings/listings'
     end
 
     get '/listings/new' do
-        erb :'listings/create_listing'
+        erb :'listings/create_listing'    #renders page to create a new listing
     end
 
     post '/listings' do
         @listing = current_agent.listings.create(address: params[:address], bedrooms: params[:bedrooms], bathrooms: params[:bathrooms], square_feet: params[:square_feet], price: params[:price])
-        if @listing.save
+        if @listing.save                                    #if the listing can successfully be created and saved
         flash[:message] = "Successfully Created Listing"
-        redirect to "/agents/#{@listing.agent_id}"
+        redirect to "/agents/#{@listing.agent_id}"          #renders the current agents show page through /agents/:id
         else
         redirect to '/listings/new'
         end
     end
-
-    # get '/listings/:id' do
-    #   @listing = Listing.find_by(id: params[:id])
-
-    # end
 
     get '/listings/:id/edit' do
       if logged_in?
@@ -39,8 +34,8 @@ class ListingsController < ApplicationController
     patch '/listings/:id' do
       
       if logged_in?
-        @listing = Listing.find_by(id: params[:id])
-        if params[:address] && params[:bedrooms] && params[:bathrooms] && params[:square_feet] && params[:price]
+        @listing = Listing.find_by(id: params[:id])   #finds the current listing by using associated id
+        if params[:address] && params[:bedrooms] && params[:bathrooms] && params[:square_feet] && params[:price]    #if all param fields are complete the edit will be processed 
         @listing.update(address: params[:address], bedrooms: params[:bedrooms], bathrooms: params[:bathrooms], square_feet: params[:square_feet], price: params[:price])
         redirect to "/agents/#{@listing.agent_id}"
       else
@@ -58,7 +53,7 @@ class ListingsController < ApplicationController
       
       @agent = Agent.find_by(id: @listing.agent_id)
       if current_agent == @agent
-        #delete action logged in does not let a user delete a tweet they did not create
+        #delete action does not let a user delete a listing they did not create
         @listing.delete
       end
       redirect to "/agents/#{current_agent.id}"
