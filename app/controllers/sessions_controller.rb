@@ -10,15 +10,15 @@ class SessionsController < ApplicationController
 
     #Looking for a more elegant way of confirming completed fields possibly by using validations
     post '/signup' do
-        if  params[:email] == "" 
+        if  params[:email] == "" || params[:user_name] == "" || params[:password] == ""
             flash[:message] = "Please Complete Form"
             redirect to '/signup'
-            elsif params[:user_name] == ""  #Making sure all the fields are filled out for signup
-            flash[:message] = "Please Complete Form"
-            redirect to '/signup'
-            elsif params[:password] == ""
-            flash[:message] = "Please Complete Form"
-            redirect to '/signup'
+        # elsif params[:user_name] == ""  #Making sure all the fields are filled out for signup
+        #     flash[:message] = "Please Complete Form"
+        #     redirect to '/signup'
+        # elsif params[:password] == ""
+        #     flash[:message] = "Please Complete Form"
+        #     redirect to '/signup'
         else
             @agent = Agent.create(email: params[:email], user_name: params[:user_name], password: params[:password])
         

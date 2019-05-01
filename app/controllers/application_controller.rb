@@ -23,6 +23,20 @@ class ApplicationController < Sinatra::Base
       @current_agent ||= Agent.find_by(:id => session[:user_id])    #Sets @current_agent to the active session
     end
 
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect to '/login'
+      end
+
+    def redirect_if_not_listing_agent(listing)
+      if listing.agent_id != current_agent.id
+        flash[:message] = "You do not have access to that listings"
+        redirect to "/agents/#{@listing.agent_id}"
+      end
+    end
+
+    end
+
 
   end
 
